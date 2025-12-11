@@ -1,68 +1,686 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/*CSS GENERAL PARA EL DOCUMENTO CON ESTILOS DE LETRA PARA TODO */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Cocogoose';
+  src: url('/Fonts/Cocogoose-Pro-Regular.otf') format('opentype');
+  font-weight: normal;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+@font-face {
+  font-family: 'Cocogoose';
+  src: url('/Fonts/Cocogoose-Pro-Bold.otf') format('opentype');
+  font-weight: bold;
 }
-a:hover {
-  color: #535bf2;
+
+@font-face {
+  font-family: 'Aftika';
+  src: url('/Fonts/Aftika-Regular.otf') format('opentype');
+  font-weight: normal;
 }
+
+@font-face {
+  font-family: 'Aftika';
+  src: url('/Fonts/Aftika-Extra-Light.otf') format('opentype');
+  font-weight: 200;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
+
+
+/* === IMPORTAR TAILWIND === */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === FUENTE GLOBAL === */
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: 'Cocogoose', sans-serif;
+  cursor: url('Img/cursores/cursor.png') 3 3, auto;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Cursor en TODOS los clickeables */
+button,
+a,
+[onclick],
+.cursor-pointer {
+  cursor: url('Img/cursores/seleccion.png') 5 2, pointer !important;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.text-font {
+  font-family: 'Cocogoose', sans-serif;
+  letter-spacing: 2px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* === CLASE PARA NÚMEROS === */
+
+.number-font {
+  font-family: 'Aftika', sans-serif;
+  letter-spacing: 2px;
+}
+
+@keyframes starMove {
+  from {
+    background-position: 0 0;
   }
-  a:hover {
-    color: #747bff;
+
+  to {
+    background-position: 0 1000px;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+.animate-starfield {
+  background-image:
+    radial-gradient(5px 5px at 10% 20%, rgb(231, 195, 15), transparent),
+    radial-gradient(15px 15px at 30% 70%, rgb(231, 195, 15), transparent),
+    radial-gradient(20px 20px at 50% 40%, rgb(231, 195, 15), transparent),
+    radial-gradient(20px 20px at 80% 60%, rgb(231, 195, 15), transparent),
+    radial-gradient(10px 10px at 90% 10%, rgb(231, 195, 15), transparent),
+    radial-gradient(20px 20px at 20% 90%, rgb(231, 195, 15), transparent);
+
+  background-size: 1000px 1000px;
+  background-repeat: repeat;
+  animation: starMove 10s linear infinite;
+}
+
+@keyframes animacion-nave {
+  0% {
+    transform: translate(-150px, -150px) rotate(0deg);
   }
+
+  25% {
+    transform: translate(calc(100vw + 150px), 50vh) rotate(90deg);
+  }
+
+  50% {
+    transform: translate(50vw, calc(100vh + 150px)) rotate(180deg);
+  }
+
+  75% {
+    transform: translate(-150px, 50vh) rotate(270deg);
+  }
+
+  100% {
+    transform: translate(-150px, -150px) rotate(360deg);
+  }
+}
+
+.animate-nave {
+  animation: animacion-nave 20s linear infinite, animacion-nave-color 3s linear infinite;
+}
+
+@keyframes animacion-nave-color {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Fondo espacial solo para selección de mundos */
+.fondo-seleccion {
+  background-image: url('/Img/fondoGeneral.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/*transicion del video*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nebulosa1 {
+  0% { transform: translate(-10%, -10%) scale(1); }
+  50% { transform: translate(20%, 10%) scale(1.2); }
+  100% { transform: translate(-10%, -10%) scale(1); }
+}
+
+@keyframes nebulosa2 {
+  0% { transform: translate(50%, -20%) scale(1); }
+  50% { transform: translate(40%, 20%) scale(1.3); }
+  100% { transform: translate(50%, -20%) scale(1); }
+}
+
+@keyframes nebulosa3 {
+  0% { transform: translate(20%, 60%) scale(1); }
+  50% { transform: translate(10%, 40%) scale(1.25); }
+  100% { transform: translate(20%, 60%) scale(1); }
+}
+
+.animate-nebulosa1 { animation: nebulosa1 18s ease-in-out infinite; }
+.animate-nebulosa2 { animation: nebulosa2 22s ease-in-out infinite; }
+.animate-nebulosa3 { animation: nebulosa3 26s ease-in-out infinite; }
+
+@keyframes galaxy {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.animate-galaxy {
+  animation: galaxy 120s linear infinite;
+}
+
+/* ESTILOS PARA RAYOS LÁSER TIPO KAMEHAMEHA */
+
+.laser-beam {
+  position: absolute;
+  top: 50%;
+  height: 60px;
+  z-index: 20;
+  pointer-events: none;
+  animation: laserPulse 0.4s ease-out;
+}
+
+/* Láser del jugador (izquierda a derecha) */
+.laser-jugador {
+  left: 20%;
+  width: 60%;
+  transform: translateY(-50%);
+}
+
+/* Láser del enemigo (derecha a izquierda) */
+.laser-enemigo {
+  right: 20%;
+  width: 60%;
+  transform: translateY(-50%) scaleX(-1);
+}
+
+/* Núcleo del láser */
+.laser-core {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 10%,
+    rgba(100, 200, 255, 1) 50%,
+    rgba(0, 150, 255, 1) 90%,
+    rgba(0, 100, 255, 0) 100%
+  );
+  box-shadow: 
+    0 0 20px rgba(100, 200, 255, 0.8),
+    0 0 40px rgba(0, 150, 255, 0.6);
+  animation: laserExpand 0.4s ease-out, laserShine 0.1s infinite;
+}
+
+/* Resplandor exterior */
+.laser-glow {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    90deg,
+    rgba(100, 200, 255, 0) 0%,
+    rgba(100, 200, 255, 0.4) 20%,
+    rgba(0, 150, 255, 0.3) 50%,
+    rgba(100, 200, 255, 0.4) 80%,
+    rgba(100, 200, 255, 0) 100%
+  );
+  filter: blur(15px);
+  animation: laserGlow 0.3s ease-in-out infinite alternate;
+}
+
+/* Partículas de energía */
+.laser-particles {
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.8) 2px, transparent 2px),
+    radial-gradient(circle, rgba(100, 200, 255, 0.6) 3px, transparent 3px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 1px, transparent 1px);
+  background-size: 50px 60px, 80px 60px, 30px 60px;
+  background-position: 0 0, 20px 10px, 40px 5px;
+  animation: particlesMove 0.4s linear;
+  opacity: 0.7;
+}
+
+/* Animación especial cuando el enemigo dispara (invertido) */
+.laser-enemigo .laser-core {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 100, 100, 1) 10%,
+    rgba(255, 50, 50, 1) 50%,
+    rgba(200, 0, 0, 1) 90%,
+    rgba(150, 0, 0, 0) 100%
+  );
+  box-shadow: 
+    0 0 20px rgba(255, 100, 100, 0.8),
+    0 0 40px rgba(255, 50, 50, 0.6);
+}
+
+.laser-enemigo .laser-glow {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 100, 100, 0) 0%,
+    rgba(255, 100, 100, 0.4) 20%,
+    rgba(255, 50, 50, 0.3) 50%,
+    rgba(255, 100, 100, 0.4) 80%,
+    rgba(255, 100, 100, 0) 100%
+  );
+}
+
+.laser-enemigo .laser-particles {
+  background-image: 
+    radial-gradient(circle, rgba(255, 200, 200, 0.8) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255, 100, 100, 0.6) 3px, transparent 3px),
+    radial-gradient(circle, rgba(255, 150, 150, 0.9) 1px, transparent 1px);
+}
+
+/* ============================================ */
+/* BOLAS DE ENERGÍA */
+/* ============================================ */
+
+.bola-energia {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  z-index: 25;
+  pointer-events: none;
+}
+
+/* Posiciones de carga */
+.bola-carga-jugador {
+  left: 22%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bola-carga-enemigo {
+  right: 17%;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+
+/* Posiciones de impacto */
+.bola-impacto-jugador {
+  left: 22%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: impactoExplosion 0.3s ease-out;
+}
+
+.bola-impacto-enemigo {
+  right: 17%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  animation: impactoExplosion 0.3s ease-out;
+}
+
+/* Núcleo de la bola */
+.bola-nucleo {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: bolaPulso 0.6s ease-in-out infinite;
+}
+
+.bola-nucleo.bola-azul {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(150, 220, 255, 1) 30%,
+    rgba(50, 150, 255, 1) 70%,
+    rgba(0, 100, 255, 0.8) 100%
+  );
+  box-shadow: 
+    0 0 30px rgba(100, 200, 255, 1),
+    0 0 60px rgba(50, 150, 255, 0.8),
+    inset 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.bola-nucleo.bola-roja {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 180, 180, 1) 30%,
+    rgba(255, 80, 80, 1) 70%,
+    rgba(200, 0, 0, 0.8) 100%
+  );
+  box-shadow: 
+    0 0 30px rgba(255, 100, 100, 1),
+    0 0 60px rgba(255, 50, 50, 0.8),
+    inset 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+/* Resplandor de la bola */
+.bola-resplandor {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(20px);
+  animation: bolaResplandor 0.4s ease-in-out infinite alternate;
+}
+
+.bola-resplandor.bola-azul {
+  background: radial-gradient(
+    circle,
+    rgba(100, 200, 255, 0.6) 0%,
+    rgba(50, 150, 255, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+.bola-resplandor.bola-roja {
+  background: radial-gradient(
+    circle,
+    rgba(255, 100, 100, 0.6) 0%,
+    rgba(255, 50, 50, 0.3) 50%,
+    transparent 100%
+  );
+}
+
+/* Anillo de energía */
+.bola-anillo {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: bolaAnillo 0.6s ease-out infinite;
+}
+
+.bola-anillo.bola-azul {
+  border: 3px solid rgba(100, 200, 255, 0.8);
+  box-shadow: 
+    0 0 20px rgba(100, 200, 255, 0.6),
+    inset 0 0 20px rgba(100, 200, 255, 0.4);
+}
+
+.bola-anillo.bola-roja {
+  border: 3px solid rgba(255, 100, 100, 0.8);
+  box-shadow: 
+    0 0 20px rgba(255, 100, 100, 0.6),
+    inset 0 0 20px rgba(255, 100, 100, 0.4);
+}
+
+/* Ondas de explosión al impactar */
+.explosion-ondas {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: ondaExpansion 0.3s ease-out;
+}
+
+.explosion-ondas.bola-azul {
+  border: 4px solid rgba(100, 200, 255, 1);
+  box-shadow: 0 0 40px rgba(100, 200, 255, 0.8);
+}
+
+.explosion-ondas.bola-roja {
+  border: 4px solid rgba(255, 100, 100, 1);
+  box-shadow: 0 0 40px rgba(255, 100, 100, 0.8);
+}
+
+/* ============================================ */
+/* ANIMACIONES */
+/* ============================================ */
+
+@keyframes laserPulse {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(0.1);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scaleX(1);
+  }
+}
+
+@keyframes laserExpand {
+  0% {
+    height: 5px;
+  }
+  50% {
+    height: 25px;
+  }
+  100% {
+    height: 20px;
+  }
+}
+
+@keyframes laserShine {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.3);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes laserGlow {
+  0% {
+    opacity: 0.5;
+    height: 40px;
+  }
+  100% {
+    opacity: 0.8;
+    height: 50px;
+  }
+}
+
+@keyframes particlesMove {
+  0% {
+    background-position: 0 0, 20px 10px, 40px 5px;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  100% {
+    background-position: 100% 0, 120% 10px, 140% 5px;
+    opacity: 0.3;
+  }
+}
+
+/* Animaciones de las bolas */
+@keyframes bolaPulso {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.8;
+  }
+}
+
+@keyframes bolaResplandor {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+@keyframes bolaAnillo {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes impactoExplosion {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes ondaExpansion {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* ============================================ */
+/* ANIMACIÓN DE STUN/GOLPE */
+/* ============================================ */
+
+@keyframes stunHit {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  10% {
+    transform: translate(-8px, -5px) rotate(-5deg);
+  }
+  20% {
+    transform: translate(10px, 3px) rotate(5deg);
+  }
+  30% {
+    transform: translate(-10px, 5px) rotate(-4deg);
+  }
+  40% {
+    transform: translate(8px, -3px) rotate(4deg);
+  }
+  50% {
+    transform: translate(-6px, 4px) rotate(-3deg);
+  }
+  60% {
+    transform: translate(6px, -4px) rotate(3deg);
+  }
+  70% {
+    transform: translate(-4px, 2px) rotate(-2deg);
+  }
+  80% {
+    transform: translate(4px, -2px) rotate(2deg);
+  }
+  90% {
+    transform: translate(-2px, 1px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.animate-stun-hit {
+  animation: stunHit 0.3s ease-out;
+  filter: brightness(0.5) contrast(1.5) saturate(0.3);
+}
+
+/* Stun para el enemigo (más grande, necesita más movimiento) */
+@keyframes stunHitEnemigo {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  10% {
+    transform: translate(-12px, -8px) rotate(-5deg);
+  }
+  20% {
+    transform: translate(15px, 5px) rotate(5deg);
+  }
+  30% {
+    transform: translate(-15px, 8px) rotate(-4deg);
+  }
+  40% {
+    transform: translate(12px, -5px) rotate(4deg);
+  }
+  50% {
+    transform: translate(-10px, 6px) rotate(-3deg);
+  }
+  60% {
+    transform: translate(10px, -6px) rotate(3deg);
+  }
+  70% {
+    transform: translate(-6px, 3px) rotate(-2deg);
+  }
+  80% {
+    transform: translate(6px, -3px) rotate(2deg);
+  }
+  90% {
+    transform: translate(-3px, 2px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.animate-stun-hit-enemigo {
+  animation: stunHitEnemigo 0.3s ease-out;
+  filter: brightness(0.5) contrast(1.5) saturate(0.3);
+}
+
+/* ============================================ */
+/* ANIMACIÓN PARA MUNDO ACTUAL */
+/* ============================================ */
+
+@keyframes pulseSlow {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 2s ease-in-out infinite;
 }
