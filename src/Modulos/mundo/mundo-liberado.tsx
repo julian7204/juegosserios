@@ -18,7 +18,7 @@ export default function MundoLiberado() {
     <div
       className="min-h-screen w-full flex flex-col items-center justify-center relative"
       style={{
-        backgroundImage: "url('/Img/fondoGeneral.png')",
+        backgroundImage: "url('Img/fondoGeneral.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

@@ -136,7 +136,7 @@ function GenerarNiveles() {
   return (
     <div
       className="min-h-screen w-full bg-cover bg-center p-8"
-      style={{ backgroundImage: "url('/Img/fondoGeneral.png')" }}
+      style={{ backgroundImage: "url('Img/fondoGeneral.png')" }}
     >
       <div className="max-w-4xl mx-auto bg-[#2f2c7e]/90 rounded-3xl border-8 border-[#31a8e0] p-8">
 

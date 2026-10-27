@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUsuario } from "../../services/authService";
+import { loginUsuario, usuarioInvitado } from "../../services/authService";
 
 
 declare global {
@@ -22,7 +22,7 @@ function Login() {
   useEffect(() => {
     // Crear el audio global SOLO si no existe
     if (!window.backgroundAudio) {
-      window.backgroundAudio = new Audio('/src/musica/fondo.mp3');
+      window.backgroundAudio = new Audio('musica/fondo.mp3');
       window.backgroundAudio.loop = true;
       window.backgroundAudio.volume = 0.5;
       window.backgroundAudioStarted = false;
@@ -66,14 +66,19 @@ function Login() {
     }
   }
 
+  function entrarComoInvitado(esProfesor: boolean) {
+    localStorage.setItem("userData", JSON.stringify(usuarioInvitado(esProfesor)));
+    navigate("/seleccion-juego");
+  }
+
   return (
     <div 
       className="relative w-full min-h-screen overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: "url('/Img/fondoGeneral.png')" }}
+      style={{ backgroundImage: "url('Img/fondoGeneral.png')" }}
     >
       <div className="absolute inset-0 pointer-events-none animate-starfield opacity-60"></div>
 
-      <img src="./Img/login/nave.png" className="absolute animate-nave w-80 opacity-60" />
+      <img src="Img/login/nave.png" className="absolute animate-nave w-80 opacity-60" />
 
       <div className="relative z-10 flex justify-center items-center min-h-screen px-4 number-font">
         <div className="backdrop-blur-xl bg-white/10 p-8 rounded-2xl shadow-2xl border border-white/20 w-full max-w-md mx-auto">
@@ -116,6 +121,28 @@ function Login() {
               Iniciar sesión
             </button>
           </form>
+
+          <div className="mt-6 pt-6 border-t border-white/20 space-y-3">
+            <p className="text-center text-blue-200 text-sm">
+              ¿Solo quieres probarlo? Entra sin cuenta:
+            </p>
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => entrarComoInvitado(false)}
+                className="flex-1 py-3 rounded-lg bg-white/15 hover:bg-white/25 text-white"
+              >
+                Jugar como estudiante
+              </button>
+              <button
+                type="button"
+                onClick={() => entrarComoInvitado(true)}
+                className="flex-1 py-3 rounded-lg bg-white/15 hover:bg-white/25 text-white"
+              >
+                Entrar como profesor
+              </button>
+            </div>
+          </div>
 
           <p className="text-center text-blue-200 mt-6 text-sm">
             ¿No tienes cuenta?{" "}

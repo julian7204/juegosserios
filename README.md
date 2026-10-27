@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# Misión Multiplica
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A serious game that helps children practice the multiplication tables: Tomi, a young astronaut, travels across 11 planets and beats each planet's boss by answering multiplication questions.
 
-Currently, two official plugins are available:
+*Juego serio para que niños y niñas practiquen las tablas de multiplicar. Interfaz en español.*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**▶ Play it:** https://julian7204.github.io/juegosserios/ (choose **Jugar como estudiante** or **Entrar como profesor**; no account needed)
 
-## React Compiler
+![Galaxy map](docs/capturas/4-mapa.jpg)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How it works
 
-## Expanding the ESLint configuration
+- **Students** pick a game, watch the intro, read the illustrated instructions and unlock the planets in order. Planets 1 to 10 each practice one table, and planet 11 is a final boss with mixed questions.
+- **Battles:** a correct answer fires at the boss; a wrong answer costs Tomi energy. Both health bars, the energy-ball animations and the sound effects react to every answer.
+- **Feedback:** after each world the student reviews which answers were correct or wrong before moving on.
+- **Teachers** generate a custom game: the app proposes 10 questions per world (12 in the final world), the teacher can regenerate them, and then names and saves the game for students to choose.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Login | Game selection | Instructions |
+|---|---|---|
+| ![](docs/capturas/1-inicio.jpg) | ![](docs/capturas/2-seleccion.jpg) | ![](docs/capturas/3-instrucciones.jpg) |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| World 1: Rosaluna | World 6 |
+|---|---|
+| ![](docs/capturas/5-mundo-1.jpg) | ![](docs/capturas/6-mundo-6.jpg) |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+React 19 · TypeScript · Vite · Tailwind CSS 4 · React Router 7 · bcryptjs. Deployed on GitHub Pages with GitHub Actions.
+
+## Run it locally
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Project history
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **2025: original game.** Built as a university project on software accessibility at Universidad del Azuay (Cuenca, Ecuador), together with a team of designers. **The game's code was written by hand by Julian Coronel, without AI assistance.** It originally used Firebase (Firestore) for accounts and saved games.
+- **2026: maintenance with [Claude Code](https://claude.com/claude-code).** The Firebase project had stopped accepting requests, so the game was moved to a demo mode that needs no server:
+  - accounts and teacher-made games are stored only in the player's browser (`localStorage`), so no children's data leaves the device;
+  - added guest buttons and a built-in sample game;
+  - fixed asset paths, music and custom cursors so the production build works on GitHub Pages;
+  - removed IDE template files and fonts whose trial license did not allow redistribution.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Credits
+
+- **Programming:** Julian Coronel ([@julian7204](https://github.com/julian7204))
+- **Art, characters, storyboard and UI design:** TODO: designers' names
+- **Intro video:** created by the design team; the clip carries the watermark of the AI video tool Kling.
+
+The art and illustrations belong to their authors and are used here with their permission. They are not covered by any open-source license.

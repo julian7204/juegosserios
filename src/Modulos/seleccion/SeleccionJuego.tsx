@@ -79,12 +79,12 @@ export default function SeleccionJuego() {
   };
 
   const imagenesInstrucciones = [
-    "/Img/instrucciones/pantallaInstrucciones 1.png",
-    "/Img/instrucciones/pantallaInstrucciones 2.png",
-    "/Img/instrucciones/pantallaInstrucciones 3.png",
-    "/Img/instrucciones/pantallaInstrucciones 4.png",
-    "/Img/instrucciones/pantallaInstrucciones 5.png",
-    "/Img/instrucciones/pantallaInstrucciones 6.png",
+    "Img/instrucciones/pantallaInstrucciones 1.png",
+    "Img/instrucciones/pantallaInstrucciones 2.png",
+    "Img/instrucciones/pantallaInstrucciones 3.png",
+    "Img/instrucciones/pantallaInstrucciones 4.png",
+    "Img/instrucciones/pantallaInstrucciones 5.png",
+    "Img/instrucciones/pantallaInstrucciones 6.png",
   ];
 
   // -------------------------
@@ -103,7 +103,7 @@ export default function SeleccionJuego() {
     return (
       <div
         className="min-h-screen flex flex-col items-center justify-center text-white"
-        style={{ backgroundImage: "url('/Img/fondoGeneral.png')" }}
+        style={{ backgroundImage: "url('Img/fondoGeneral.png')" }}
       >
         <h2 className="text-3xl mb-6">No existen juegos disponibles.</h2>
 
@@ -123,7 +123,7 @@ export default function SeleccionJuego() {
   return (
     <div
       className="relative min-h-screen w-full overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: "url('/Img/fondoGeneral.png')" }}
+      style={{ backgroundImage: "url('Img/fondoGeneral.png')" }}
     >
       <div className="absolute inset-0 animate-starfield opacity-50"></div>
 
@@ -136,18 +136,18 @@ export default function SeleccionJuego() {
           onClick={() => navigate("/login")}
           className="absolute top-6 -ml-36 z-20 cursor-pointer transition-transform hover:scale-110"
         >
-          <img src="/Img/botones/generales/botRegresar_Gen.png" className="w-60" />
+          <img src="Img/botones/generales/botRegresar_Gen.png" className="w-60" />
         </button>
 
         <div className="flex justify-center mt-6">
-          <img src="/Img/personajeFeliz.png" className="w-28 md:w-40 animate-bounce" />
+          <img src="Img/personajeFeliz.png" className="w-28 md:w-40 animate-bounce" />
         </div>
 
         <div className="flex items-center justify-center gap-4 md:gap-8 mt-12">
 
           <button onClick={anteriorJuego} disabled={index === 0}>
             <img
-              src="/Img/botones/generales/botRegresar_Gen.png"
+              src="Img/botones/generales/botRegresar_Gen.png"
               className={`w-20 md:w-60 ${index === 0 ? "opacity-30 cursor-not-allowed" : "hover:scale-110"
                 }`}
             />
@@ -166,8 +166,8 @@ export default function SeleccionJuego() {
             </p>
 
             <p className="text-blue-300 mt-2 text-sm number-font">
-              {juegoActual.fecha?.toDate
-                ? juegoActual.fecha.toDate().toLocaleDateString()
+              {juegoActual.fecha
+                ? new Date(juegoActual.fecha).toLocaleDateString()
                 : ""}
             </p>
           </div>
@@ -177,7 +177,7 @@ export default function SeleccionJuego() {
             disabled={index === juegos.length - 1}
           >
             <img
-              src="/Img/botones/generales/botSeguir_Gen.png"
+              src="Img/botones/generales/botSeguir_Gen.png"
               className={`w-20 md:w-60 ${index === juegos.length - 1 ? "opacity-30 cursor-not-allowed" : "hover:scale-110"
                 }`}
             />
@@ -205,7 +205,7 @@ export default function SeleccionJuego() {
           </button>
 
           <video
-            src="../Img/video/Intro_MisionMultiplica.mp4"
+            src="Img/video/Intro_MisionMultiplica.mp4"
             autoPlay
             playsInline
             preload="auto"
@@ -231,7 +231,7 @@ export default function SeleccionJuego() {
               : "hover:scale-110"
               }`}
           >
-            <img src="/Img/botones/generales/botRegresar_Gen.png" className="w-24 md:w-40" />
+            <img src="Img/botones/generales/botRegresar_Gen.png" className="w-24 md:w-40" />
           </button>
 
           <button
@@ -245,7 +245,7 @@ export default function SeleccionJuego() {
             }}
             className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 hover:scale-110"
           >
-            <img src="/Img/botones/generales/botSeguir_Gen.png" className="w-24 md:w-40" />
+            <img src="Img/botones/generales/botSeguir_Gen.png" className="w-24 md:w-40" />
           </button>
 
           <button

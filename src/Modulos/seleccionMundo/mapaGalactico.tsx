@@ -80,7 +80,7 @@ export default function MapaGalactico() {
         
         {/* VIDEO A PANTALLA COMPLETA */}
         <video
-          src="/Img/video/gemasPortal.mp4"
+          src="Img/video/gemasPortal.mp4"
           autoPlay
           className="absolute inset-0 w-full h-full object-cover"
           onEnded={() => setMostrarVideoPortal(false)}
@@ -102,7 +102,7 @@ export default function MapaGalactico() {
   return (
     <div
       className="min-h-screen w-full relative flex flex-col items-center justify-start bg-cover bg-center"
-      style={{ backgroundImage: "url('/Img/fondoGeneral.png')" }}
+      style={{ backgroundImage: "url('Img/fondoGeneral.png')" }}
     >
       {/* Estrellas fondo global */}
       <div className="absolute inset-0 animate-starfield opacity-40 pointer-events-none"></div>
@@ -112,7 +112,7 @@ export default function MapaGalactico() {
         onClick={() => {localStorage.clear(); navigate("/seleccion-juego")}}
         className="absolute top-6 left-6 z-20"
       >
-        <img src="/Img/botones/generales/botRegresar_Gen.png" className="w-60" />
+        <img src="Img/botones/generales/botRegresar_Gen.png" className="w-60" />
       </button>
 
       {/* Título */}
@@ -139,7 +139,7 @@ export default function MapaGalactico() {
               border-4 border-cyan-300
             "
             style={{
-              backgroundImage: "url('/Img/mundos/mundo11/portal.gif')",
+              backgroundImage: "url('Img/mundos/mundo11/portal.gif')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

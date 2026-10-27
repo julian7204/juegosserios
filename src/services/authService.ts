@@ -1,17 +1,26 @@
-import { db } from "../firebaseConfig";
-import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
+// src/services/authService.ts
+// Modo demo: los usuarios se guardan solo en este navegador (localStorage).
+// No se envían datos a ningún servidor.
 import bcrypt from "bcryptjs";
 
-const usuariosRef = collection(db, "usuarios");
+const USUARIOS_KEY = "mm_usuarios";
+
+interface Usuario {
+  username: string;
+  password: string;
+  edad: number;
+  esProfesor: boolean;
+}
+
+const leerUsuarios = (): Usuario[] =>
+  JSON.parse(localStorage.getItem(USUARIOS_KEY) || "[]");
 
 export const registerUsuario = async (data: { username: string; password: string; edad: number; esProfesor: boolean }) => {
   const { username, password, edad, esProfesor } = data;
+  const usuarios = leerUsuarios();
 
   // verificar si existe
-  const q = query(usuariosRef, where("username", "==", username));
-  const existe = await getDocs(q);
-
-  if (!existe.empty) {
+  if (usuarios.some((u) => u.username === username)) {
     throw new Error("El nombre de usuario ya está registrado.");
   }
 
@@ -19,24 +28,16 @@ export const registerUsuario = async (data: { username: string; password: string
   const hashed = await bcrypt.hash(password, 10);
 
   // guardar
-  await addDoc(usuariosRef, {
-    username,
-    password: hashed,
-    edad,
-    esProfesor
-  });
+  usuarios.push({ username, password: hashed, edad, esProfesor });
+  localStorage.setItem(USUARIOS_KEY, JSON.stringify(usuarios));
 };
 
 export const loginUsuario = async (username: string, password: string) => {
-  
-  const q = query(usuariosRef, where("username", "==", username));
-  const snapshot = await getDocs(q);
+  const usuario = leerUsuarios().find((u) => u.username === username);
 
-  if (snapshot.empty) {
+  if (!usuario) {
     throw new Error("Usuario no encontrado.");
   }
-
-  const usuario = snapshot.docs[0].data();
 
   const esCorrecto = await bcrypt.compare(password, usuario.password);
 
@@ -44,5 +45,12 @@ export const loginUsuario = async (username: string, password: string) => {
     throw new Error("Contraseña incorrecta.");
   }
 
-  return usuario;
+  return { username: usuario.username, edad: usuario.edad, esProfesor: usuario.esProfesor };
 };
+
+// Sesión de invitado para probar el juego sin crear cuenta
+export const usuarioInvitado = (esProfesor: boolean) => ({
+  username: esProfesor ? "Profesor invitado" : "Estudiante invitado",
+  edad: esProfesor ? 30 : 8,
+  esProfesor,
+});

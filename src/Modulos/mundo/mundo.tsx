@@ -77,7 +77,7 @@ export default function Mundo() {
     const esCorrecto = respuestaNumerica === pregunta.resultado;
 
     // Usar el mismo audio de disparo para ambos (ajusta las rutas si tienes audios distintos)
-    const disparoAudio = new Audio(esCorrecto ? '/src/musica/disparo.mp3' : '/src/musica/disparo.mp3');
+    const disparoAudio = new Audio(esCorrecto ? 'musica/disparo.mp3' : 'musica/disparo.mp3');
 
     if (esCorrecto) {
       setAciertos(prev => [...prev, pregunta]);
@@ -186,7 +186,7 @@ export default function Mundo() {
    */
   useEffect(() => {
     if (!window.backgroundAudio) {
-      window.backgroundAudio = new Audio('/src/musica/pelea.ogg');
+      window.backgroundAudio = new Audio('musica/pelea.ogg');
       window.backgroundAudio.loop = true;
       window.backgroundAudio.volume = 0.5;
       window.backgroundAudioStarted = false;
@@ -295,7 +295,7 @@ export default function Mundo() {
       {/* --- COLUMNA 1: JUGADOR --- */}
       <div className="flex flex-col items-center justify-center mb-21 relative z-10">
         <img
-          src="/Img/personajeLado.png"
+          src="Img/personajeLado.png"
           className={`w-30 transition-all ${hitJugador ? "animate-stun-hit brightness-50" : ""} ${bolaEnergiaCargando === 'jugador' ? "brightness-150 scale-105" : ""}`} // Interpolación de string corregida
         />
         <div className="w-40 h-6 bg-red-800 rounded-full mt-4">

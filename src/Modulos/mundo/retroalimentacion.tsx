@@ -21,7 +21,7 @@ export default function Retroalimentacion() {
 
     <div
       className="min-h-screen w-full flex flex-col items-center justify-center relative"
-      style={{ backgroundImage: "url('/Img/fondoGeneral.png')" }}
+      style={{ backgroundImage: "url('Img/fondoGeneral.png')" }}
     >
       {/* Estrellas animadas detrás */}
       <div className="absolute inset-0 animate-starfield opacity-40 pointer-events-none"></div>

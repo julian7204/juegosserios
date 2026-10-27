@@ -60,7 +60,7 @@ export default function MundoFinal() {
 
   useEffect(() => {
     if (!window.backgroundAudio) {
-      window.backgroundAudio = new Audio('/src/musica/pelea.ogg');
+      window.backgroundAudio = new Audio('musica/pelea.ogg');
       window.backgroundAudio.loop = true;
       window.backgroundAudio.volume = 0.5;
       window.backgroundAudioStarted = false;
@@ -245,7 +245,7 @@ export default function MundoFinal() {
       {/* --- COLUMNA 1: TOMI --- */}
       <div className="flex flex-col items-center relative z-10">
         <img
-          src="/Img/personajeLado.png"
+          src="Img/personajeLado.png"
           className={`w-40 ${hitJugador ? "animate-stun-hit brightness-50" : ""}`}
         />
       </div>

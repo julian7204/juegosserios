@@ -1,18 +1,6 @@
 /*CSS GENERAL PARA EL DOCUMENTO CON ESTILOS DE LETRA PARA TODO */
 
 @font-face {
-  font-family: 'Cocogoose';
-  src: url('/Fonts/Cocogoose-Pro-Regular.otf') format('opentype');
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: 'Cocogoose';
-  src: url('/Fonts/Cocogoose-Pro-Bold.otf') format('opentype');
-  font-weight: bold;
-}
-
-@font-face {
   font-family: 'Aftika';
   src: url('/Fonts/Aftika-Regular.otf') format('opentype');
   font-weight: normal;
@@ -44,7 +32,7 @@
 
 body {
   font-family: 'Cocogoose', sans-serif;
-  cursor: url('Img/cursores/cursor.png') 3 3, auto;
+  cursor: url('/Img/cursores/cursor.png') 3 3, auto;
 }
 
 /* Cursor en TODOS los clickeables */
@@ -52,7 +40,7 @@ button,
 a,
 [onclick],
 .cursor-pointer {
-  cursor: url('Img/cursores/seleccion.png') 5 2, pointer !important;
+  cursor: url('/Img/cursores/seleccion.png') 5 2, pointer !important;
 }
 
 .text-font {

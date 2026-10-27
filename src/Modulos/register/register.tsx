@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { registerUsuario } from "../../services/authService";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 
 function Register() {
@@ -58,7 +57,7 @@ function Register() {
   return (
     <div
       className="relative w-full min-h-screen flex items-center justify-center bg-cover"
-      style={{ backgroundImage: "url('/Img/fondoGeneral.png')" }}
+      style={{ backgroundImage: "url('Img/fondoGeneral.png')" }}
     >
       <div className="absolute inset-0 animate-starfield opacity-60"></div>
       <div className="absolute inset-0 bg-black/40"></div>

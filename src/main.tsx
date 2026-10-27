@@ -1,6 +1,6 @@
 // main.tsx
 import { StrictMode } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { createRoot } from 'react-dom/client'
 
 import Login from './Modulos/login/login';
@@ -26,7 +26,7 @@ function App() {
     const link = document.querySelector("link[rel~='icon']") as HTMLLinkElement || document.createElement('link');
     link.type = 'image/png';
     link.rel = 'icon';
-    link.href = '/Casco.png'; 
+    link.href = 'Casco.png'; 
     document.head.appendChild(link);
 
   
