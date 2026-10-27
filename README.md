@@ -36,7 +36,7 @@ npm run dev
 
 ## Project history
 
-- **2025: original game.** Built as a university project on software accessibility at Universidad del Azuay (Cuenca, Ecuador), together with a team of designers. **The game's code was written by hand by Julian Coronel, without AI assistance.** It originally used Firebase (Firestore) for accounts and saved games.
+- **2025: original game.** Built as a university project on software accessibility at Universidad del Azuay (Cuenca, Ecuador), together with a team of designers. **The game's code was written by hand, without AI assistance.** It originally used Firebase (Firestore) for accounts and saved games.
 - **2026: maintenance with [Claude Code](https://claude.com/claude-code).** The Firebase project had stopped accepting requests, so the game was moved to a demo mode that needs no server:
   - accounts and teacher-made games are stored only in the player's browser (`localStorage`), so no children's data leaves the device;
   - added guest buttons and a built-in sample game;
@@ -46,7 +46,8 @@ npm run dev
 ## Credits
 
 - **Programming:** Julian Coronel ([@julian7204](https://github.com/julian7204))
-- **Art, characters, storyboard and UI design:** TODO: designers' names
-- **Intro video:** created by the design team; the clip carries the watermark of the AI video tool Kling.
+- **Collaborator:** [@rronrri](https://github.com/rronrri)
 
-The art and illustrations belong to their authors and are used here with their permission. They are not covered by any open-source license.
+## Acknowledgments
+
+Thanks to the design team at Universidad del Azuay, who created the art, characters, storyboard, UI and intro video of Misión Multiplica (the intro clip carries the watermark of the AI video tool Kling). The art and illustrations belong to their authors and are used here with their permission. They are not covered by any open-source license.
